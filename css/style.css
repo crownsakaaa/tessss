@@ -79,9 +79,15 @@ a {
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 0.55rem 1rem;
-  text-align: center;
+  padding: 0.55rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.announcement-bar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .bar-inner {
@@ -89,7 +95,10 @@ a {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
+  white-space: nowrap;
+  padding: 0 1rem;
+  min-width: max-content;
+  margin: 0 auto;
 }
 
 .dot-sep {
@@ -1578,14 +1587,12 @@ a {
 /* --- Tablet portrait / large phone (max 768px) --- */
 @media (max-width: 768px) {
 
-  /* Announcement bar: hide separators, stack neatly */
-  .bar-inner {
-    gap: 0.4rem;
-    font-size: 0.7rem;
-    justify-content: center;
+  /* Announcement bar: always scrollable, no wrapping */
+  .announcement-bar {
+    font-size: 0.72rem;
   }
-  .dot-sep {
-    display: none;
+  .bar-inner {
+    justify-content: flex-start;
   }
 
   /* Navbar */
@@ -1703,21 +1710,9 @@ a {
 /* --- Small phone (max 480px) --- */
 @media (max-width: 480px) {
 
-  /* Announcement bar: single line, scroll */
+  /* Announcement bar: slightly smaller font */
   .announcement-bar {
     font-size: 0.68rem;
-    overflow-x: auto;
-    white-space: nowrap;
-    text-align: left;
-    padding: 0.45rem 1rem;
-  }
-  .bar-inner {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-  .dot-sep {
-    display: inline;
   }
 
   /* Navbar: tighter */
