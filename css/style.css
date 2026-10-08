@@ -1606,3 +1606,254 @@ a {
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   WHATSAPP — Floating Button & Contact Section
+   ========================================================================== */
+
+/* --- Floating WA Button --- */
+.float-wa-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 20px 14px 16px;
+  border-radius: 50px;
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.float-wa-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+}
+
+.float-wa-btn:active {
+  transform: translateY(0);
+}
+
+.float-wa-label {
+  white-space: nowrap;
+}
+
+/* Pulsing ping dot */
+.float-wa-ping {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  background: #ff4b4b;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: wa-ping 1.8s ease-in-out infinite;
+}
+
+@keyframes wa-ping {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* --- WA Contact Section --- */
+.wa-contact-section {
+  background: #F0FDF4;
+  border-top: 1px solid #BBF7D0;
+  padding: 80px 0;
+}
+
+.wa-contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.wa-contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #16A34A;
+  margin-bottom: 12px;
+}
+
+.wa-contact-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #111;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+}
+
+.wa-contact-desc {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.65;
+  margin: 0 0 28px;
+}
+
+.wa-contact-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #15803D;
+  background: #DCFCE7;
+  padding: 8px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.btn-wa-section {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-wa-section:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* --- WA Chat Bubble Preview --- */
+.wa-contact-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.wa-bubble-preview {
+  background: #E5DDD5;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.wa-bubble-header {
+  background: #075E54;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.wa-seller-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wa-seller-status {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+.wa-messages {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wa-msg {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #111;
+}
+
+.wa-msg-in {
+  background: #fff;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.wa-msg-out {
+  background: #DCF8C6;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.wa-input-preview {
+  background: #F0F0F0;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+}
+
+.wa-input-preview span {
+  font-size: 0.82rem;
+  color: #aaa;
+}
+
+/* --- Responsive WA Section --- */
+@media (max-width: 768px) {
+  .wa-contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wa-contact-visual {
+    order: -1;
+  }
+
+  .float-wa-btn {
+    bottom: 20px;
+    right: 16px;
+    padding: 12px 16px 12px 14px;
+  }
+
+  .float-wa-label {
+    display: none;
+  }
+
+  .float-wa-btn {
+    border-radius: 50%;
+    padding: 16px;
+  }
+}
