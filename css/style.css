@@ -1565,45 +1565,213 @@ a {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN — TABLET & MOBILE
    ========================================================================== */
+
+/* --- Tablet (max 1024px) --- */
 @media (max-width: 1024px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* --- Tablet portrait / large phone (max 768px) --- */
 @media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+
+  /* Announcement bar: hide separators, stack neatly */
+  .bar-inner {
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    justify-content: center;
+  }
+  .dot-sep {
+    display: none;
   }
 
-  .product-detail-modal-window {
-    grid-template-columns: 1fr;
-  }
-
-  .checkout-grid {
-    grid-template-columns: 1fr;
-  }
-
+  /* Navbar */
   .navbar-container {
     flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.6rem 0;
   }
-
+  .brand-logo {
+    font-size: 1.2rem;
+  }
+  .brand-sub {
+    display: none;
+  }
   .search-wrapper {
     order: 3;
     max-width: 100%;
     width: 100%;
+    flex: none;
   }
-
   .nav-btn-label {
     display: none;
   }
+  .btn-nav-action {
+    padding: 0.45rem 0.65rem;
+  }
 
+  /* Catalog section */
+  .main-content {
+    padding: 1.25rem 0 3rem;
+  }
+  .catalog-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .catalog-heading {
+    font-size: 1.25rem;
+  }
+  .catalog-sort-box {
+    align-self: flex-end;
+  }
+  .category-filter-nav {
+    gap: 0.3rem;
+    margin-bottom: 1.25rem;
+  }
+  .category-pill {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Product grid: 2 columns */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .product-card-content {
+    padding: 0.75rem;
+  }
+  .product-title {
+    font-size: 0.84rem;
+  }
+  .product-desc-preview {
+    display: none; /* hide excerpt on small screens */
+  }
+  .price-now {
+    font-size: 0.95rem;
+  }
+
+  /* Detail modal: single column, full height */
+  .modal-overlay {
+    align-items: flex-end;
+  }
+  .product-detail-modal-window {
+    grid-template-columns: 1fr;
+    border-radius: 16px 16px 0 0;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  /* Cart & Wishlist drawer */
+  .cart-drawer {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    top: auto;
+    bottom: 0;
+    height: 90vh;
+  }
+
+  /* Checkout */
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  .checkout-modal-window {
+    border-radius: 16px 16px 0 0;
+    height: 92vh;
+    max-height: 92vh;
+    margin-top: auto;
+    overflow-y: auto;
+  }
+
+  /* Footer */
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+/* --- Small phone (max 480px) --- */
+@media (max-width: 480px) {
+
+  /* Announcement bar: single line, scroll */
+  .announcement-bar {
+    font-size: 0.68rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: left;
+    padding: 0.45rem 1rem;
+  }
+  .bar-inner {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  .dot-sep {
+    display: inline;
+  }
+
+  /* Navbar: tighter */
+  .navbar-header {
+    padding: 0.5rem 0;
+  }
+  .brand-logo {
+    font-size: 1.1rem;
+  }
+  .search-input-box {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.8rem 0.5rem 2rem;
+  }
+
+  /* Product grid: 2 tight columns */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .product-card-content {
+    padding: 0.6rem;
+  }
+  .product-title {
+    font-size: 0.8rem;
+  }
+  .btn-add-to-cart-card {
+    font-size: 0.72rem;
+    padding: 0.5rem 0.6rem;
+  }
+  .price-now {
+    font-size: 0.88rem;
+  }
+  .price-original {
+    font-size: 0.72rem;
+  }
+
+  /* Product detail modal: full screen */
+  .product-detail-modal-window {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  /* Cart drawer: full screen */
+  .cart-drawer {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  /* WA Section */
+  .wa-contact-title {
+    font-size: 1.4rem;
+  }
+  .wa-contact-section {
+    padding: 48px 0;
   }
 }
 
