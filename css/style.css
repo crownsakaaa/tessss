@@ -1619,49 +1619,51 @@ a {
   z-index: 999;
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #25D366;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: #128C7E;
   color: #fff;
   text-decoration: none;
-  padding: 14px 20px 14px 16px;
-  border-radius: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.float-wa-btn::after {
+  content: 'Chat seller';
+  position: absolute;
+  right: 60px;
+  background: #1a1a1a;
+  color: #fff;
   font-family: var(--font-main);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.float-wa-btn:hover::after {
+  opacity: 1;
 }
 
 .float-wa-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+  background: #075E54;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  transform: translateY(-2px);
 }
 
 .float-wa-btn:active {
-  transform: translateY(0);
+  transform: scale(0.96);
 }
 
-.float-wa-label {
-  white-space: nowrap;
-}
-
-/* Pulsing ping dot */
+.float-wa-label,
 .float-wa-ping {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 14px;
-  height: 14px;
-  background: #ff4b4b;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  animation: wa-ping 1.8s ease-in-out infinite;
-}
-
-@keyframes wa-ping {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
+  display: none;
 }
 
 /* --- WA Contact Section --- */
@@ -1845,15 +1847,11 @@ a {
   .float-wa-btn {
     bottom: 20px;
     right: 16px;
-    padding: 12px 16px 12px 14px;
+    width: 48px;
+    height: 48px;
   }
 
-  .float-wa-label {
+  .float-wa-btn::after {
     display: none;
-  }
-
-  .float-wa-btn {
-    border-radius: 50%;
-    padding: 16px;
   }
 }
