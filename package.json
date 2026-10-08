@@ -1,0 +1,18 @@
+{
+  "name": "yazuar-apparel-ecommerce",
+  "version": "1.0.0",
+  "description": "Website E-Commerce Modern Kurasi Produk Lokal untuk Tugas Sekolah",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "ecommerce",
+    "school-project",
+    "vanilla-js",
+    "indonesia"
+  ],
+  "author": "Kelompok Siswa",
+  "license": "MIT"
+}

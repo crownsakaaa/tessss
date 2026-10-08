@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAZUAR APPAREL CO. — Local Streetwear & Goods</title>
+  <meta name="description" content="Toko online apparel lokal, t-shirt boxy heavyweight, hoodie fleece, dan aksesoris harian.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23111111%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>Y</text></svg>">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container bar-inner">
+      <span><strong>FREE ONGKIR</strong> MIN. BELANJA RP 150.000</span>
+      <span class="dot-sep">&bull;</span>
+      <span>KODE KUPON: <span class="highlight-code">DISKON10</span> (POTONGAN 10%)</span>
+      <span class="dot-sep">&bull;</span>
+      <span>METODE PEMBAYARAN: QRIS, BCA, COD</span>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="navbar-header">
+    <div class="container navbar-container">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-wrapper" title="YAZUAR APPAREL CO.">
+        <span class="brand-logo">YAZUAR</span>
+        <span class="brand-sub">APPAREL CO.</span>
+      </a>
+
+      <!-- Quick Search Bar -->
+      <div class="search-wrapper">
+        <span class="search-icon-left">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="text" id="search-input" class="search-input-box" placeholder="Cari kaos boxy, hoodie, topi, totebag..." autocomplete="off">
+        <button id="btn-clear-search" class="btn-clear-search" title="Hapus pencarian">&times;</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <!-- Wishlist -->
+        <button id="btn-open-wishlist" class="btn-nav-action" title="Daftar Favorit">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="nav-btn-label">WISHLIST</span>
+          <span id="wishlist-count-badge" class="badge-count">0</span>
+        </button>
+
+        <!-- Cart -->
+        <button id="btn-open-cart" class="btn-nav-action btn-cart-action" title="Keranjang Belanja">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-7z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="nav-btn-label">CART</span>
+          <span id="cart-count-badge" class="badge-count">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content: Langsung Katalog Produk -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Catalog Action Bar -->
+      <div class="catalog-top-bar">
+        <div>
+          <h1 class="catalog-heading">CATALOG / NEW DROP</h1>
+          <p class="catalog-sub" id="catalog-result-count">Memuat katalog produk...</p>
+        </div>
+
+        <div class="catalog-sort-box">
+          <label for="sort-select">URUTKAN:</label>
+          <select id="sort-select" class="select-clean">
+            <option value="popular">Paling Banyak Terjual</option>
+            <option value="price-asc">Harga: Termurah</option>
+            <option value="price-desc">Harga: Termahal</option>
+            <option value="rating-desc">Rating Tertinggi</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <nav class="category-filter-nav" aria-label="Filter Kategori">
+        <button class="category-pill active" data-category="all">ALL ITEMS</button>
+        <button class="category-pill" data-category="tshirt">T-SHIRTS</button>
+        <button class="category-pill" data-category="outerwear">OUTERWEAR</button>
+        <button class="category-pill" data-category="accessories">ACCESSORIES</button>
+        <button class="category-pill" data-category="lifestyle">LIFESTYLE</button>
+      </nav>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       OFF-CANVAS CART DRAWER
+       ======================================================================= -->
+  <div id="cart-overlay" class="drawer-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Keranjang Belanja">
+    <div class="drawer-header">
+      <h3 class="drawer-title">
+        <span>CART / KERANJANG</span>
+      </h3>
+      <button id="btn-close-cart" class="btn-close-drawer" title="Tutup">&times;</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="free-shipping-box">
+      <div id="free-shipping-text" class="free-shipping-text">
+        Hitung gratis ongkir...
+      </div>
+      <div class="free-shipping-bar-bg">
+        <div id="free-shipping-progress" class="free-shipping-progress"></div>
+      </div>
+    </div>
+
+    <!-- Items List Body -->
+    <div class="cart-drawer-body">
+      <div id="cart-empty-state" class="cart-empty-state">
+        <div class="empty-box-tag">[ KERANJANG KOSONG ]</div>
+        <h4>Keranjang Kosong</h4>
+        <p>Belum ada produk yang kamu pilih.</p>
+        <button class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="closeCartDrawer();">
+          Pilih Produk
+        </button>
+      </div>
+      <div id="cart-items-container"></div>
+    </div>
+
+    <!-- Voucher Form -->
+    <div class="voucher-form-box">
+      <div class="voucher-input-group">
+        <input type="text" id="voucher-input" class="voucher-input" placeholder="KODE KUPON (contoh: DISKON10)">
+        <button id="btn-apply-voucher" class="btn btn-secondary btn-sm">Gunakan</button>
+      </div>
+      <div id="applied-voucher-tag" class="applied-voucher-tag" style="display: none;"></div>
+      <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.35rem;">
+        Kupon tersedia: <strong>DISKON10</strong> (Diskon 10%) | <strong>POTONGAN25</strong> (Potongan 25k)
+      </div>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div id="cart-footer" class="drawer-footer">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">Rp 0</span>
+      </div>
+      <div class="summary-row discount-row" id="cart-discount-row" style="display: none;">
+        <span>Diskon Kupon</span>
+        <span id="cart-discount">- Rp 0</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total Belanja</span>
+        <span id="cart-grand-total">Rp 0</span>
+      </div>
+      <button id="btn-proceed-checkout" class="btn btn-accent" style="width: 100%;">
+        CHECKOUT SEKARANG &rarr;
+      </button>
+    </div>
+  </aside>
+
+  <!-- =======================================================================
+       PRODUCT DETAIL MODAL
+       ======================================================================= -->
+  <div id="product-detail-modal" class="modal-backdrop">
+    <div class="modal-window product-detail-modal-window">
+      <button id="btn-close-detail-modal" class="btn-close-modal" title="Tutup">&times;</button>
+
+      <div class="modal-prod-media">
+        <img id="modal-prod-img" src="" alt="" class="modal-prod-img">
+      </div>
+
+      <div class="modal-prod-info">
+        <div class="modal-prod-header">
+          <div id="modal-prod-category" class="modal-prod-category"></div>
+          <h2 id="modal-prod-title" class="modal-prod-title"></h2>
+          <div class="modal-prod-meta">
+            <span id="modal-prod-rating"></span>
+            <span>&bull;</span>
+            <span id="modal-prod-sold"></span>
+          </div>
+        </div>
+
+        <div class="modal-pricing-box">
+          <div id="modal-prod-price" class="modal-prod-price"></div>
+          <div id="modal-prod-orig-price" class="modal-prod-orig-price"></div>
+          <div id="modal-prod-stock" class="modal-prod-stock"></div>
+        </div>
+
+        <p id="modal-prod-desc" class="modal-desc-text"></p>
+
+        <!-- Variants (Size / Option) -->
+        <div class="modal-variant-section">
+          <span id="modal-variant-label" class="modal-section-label">Pilih Ukuran:</span>
+          <div id="modal-variant-options" class="variant-options-group"></div>
+        </div>
+
+        <!-- Quantity & Action -->
+        <div class="modal-qty-actions-row">
+          <div class="quantity-stepper" style="height: 44px;">
+            <button id="modal-qty-minus" class="step-btn" style="width: 36px;">-</button>
+            <span id="modal-qty-val" class="step-val" style="width: 36px; font-size: 0.95rem;">1</span>
+            <button id="modal-qty-plus" class="step-btn" style="width: 36px;">+</button>
+          </div>
+          <button id="btn-modal-add-cart" class="btn btn-primary" style="flex: 1;">
+            + TAMBAH KE KERANJANG
+          </button>
+          <button id="btn-modal-buy-direct" class="btn btn-accent">
+            BELI LANGSUNG
+          </button>
+        </div>
+
+        <!-- Specifications -->
+        <div class="modal-section-label" style="margin-top: 1.5rem;">Spesifikasi Produk:</div>
+        <div id="modal-prod-specs" class="specs-table"></div>
+
+        <!-- Reviews -->
+        <div class="reviews-section">
+          <div class="modal-section-label">Ulasan Pembeli:</div>
+          <div id="modal-prod-reviews"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       CHECKOUT MODAL
+       ======================================================================= -->
+  <div id="checkout-modal" class="modal-backdrop">
+    <div class="modal-window checkout-modal-window">
+      <button id="btn-close-checkout" class="btn-close-modal" title="Tutup">&times;</button>
+
+      <div style="border-bottom: 2px solid var(--text-main); padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+        <h2 style="font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em;">FORMULIR PEMESANAN & PENGIRIMAN</h2>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">Isi alamat tujuan pengiriman dan pilih metode pembayaran</p>
+      </div>
+
+      <form id="checkout-form">
+        <div class="checkout-grid">
+          <!-- Left Column: Form & Courier & Payment -->
+          <div>
+            <!-- 1. Customer Info -->
+            <div class="co-section-title"><span>1.</span> DATA PENERIMA</div>
+            
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="cust-name">Nama Lengkap *</label>
+                <input type="text" id="cust-name" class="form-input" placeholder="Contoh: Dimas Aditya" required value="Dimas Aditya">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cust-phone">No. WhatsApp / HP *</label>
+                <input type="tel" id="cust-phone" class="form-input" placeholder="0812xxxxxxxx" required value="081234567890">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cust-address">Alamat Pengiriman Lengkap *</label>
+              <textarea id="cust-address" class="form-textarea" rows="2" placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan" required>Jl. Dipati Ukur No. 45, RT 03/04</textarea>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="cust-city">Kota / Kabupaten *</label>
+                <input type="text" id="cust-city" class="form-input" placeholder="Kota Bandung" required value="Kota Bandung">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cust-notes">Catatan Kurir (Opsional)</label>
+                <input type="text" id="cust-notes" class="form-input" placeholder="Titip di pos security / pagar hitam">
+              </div>
+            </div>
+
+            <!-- 2. Shipping Courier -->
+            <div class="co-section-title" style="margin-top: 1.5rem;"><span>2.</span> PILIH KURIR EKSPEDISI</div>
+            <div class="courier-options">
+              <label class="courier-label-card">
+                <div class="courier-radio-left">
+                  <input type="radio" name="shipping_courier" value="jne" checked>
+                  <div class="courier-info">
+                    <div>JNE Reguler</div>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">Estimasi 2 - 3 Hari</div>
+                  </div>
+                </div>
+                <span class="courier-cost">Rp 12.000</span>
+              </label>
+
+              <label class="courier-label-card">
+                <div class="courier-radio-left">
+                  <input type="radio" name="shipping_courier" value="sicepat">
+                  <div class="courier-info">
+                    <div>SiCepat BEST (Kilat)</div>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">Estimasi 1 - 2 Hari</div>
+                  </div>
+                </div>
+                <span class="courier-cost">Rp 16.000</span>
+              </label>
+
+              <label class="courier-label-card">
+                <div class="courier-radio-left">
+                  <input type="radio" name="shipping_courier" value="gosend">
+                  <div class="courier-info">
+                    <div>GoSend / Grab Instant</div>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);">Estimasi 3 - 5 Jam</div>
+                  </div>
+                </div>
+                <span class="courier-cost">Rp 25.000</span>
+              </label>
+            </div>
+
+            <!-- 3. Payment Method -->
+            <div class="co-section-title"><span>3.</span> METODE PEMBAYARAN</div>
+            <div class="payment-tabs-group">
+              <label class="payment-tab-card">
+                <input type="radio" name="payment_method" value="qris" checked>
+                <div>QRIS</div>
+                <div style="font-size: 0.68rem; font-weight: normal;">BCA, GoPay, Dana</div>
+              </label>
+              <label class="payment-tab-card">
+                <input type="radio" name="payment_method" value="va">
+                <div>Transfer VA</div>
+                <div style="font-size: 0.68rem; font-weight: normal;">BCA / Mandiri</div>
+              </label>
+              <label class="payment-tab-card">
+                <input type="radio" name="payment_method" value="cod">
+                <div>COD</div>
+                <div style="font-size: 0.68rem; font-weight: normal;">Bayar Tunai</div>
+              </label>
+            </div>
+
+            <!-- Dynamic Payment Content -->
+            <!-- QRIS Box -->
+            <div id="pay-box-qris" class="payment-box">
+              <div class="qris-display-container">
+                <div class="qris-timer-pill">
+                  Sisa Waktu Pembayaran: <span id="qris-timer-text">15:00</span>
+                </div>
+                <div class="qris-mock-frame">
+                  <div class="qris-logo-header">QRIS - STANDAR PEMBAYARAN NASIONAL</div>
+                  <!-- SVG QR Graphic -->
+                  <svg class="qris-qr-graphic" viewBox="0 0 100 100">
+                    <rect width="100" height="100" fill="#FFFFFF"/>
+                    <rect x="10" y="10" width="24" height="24" fill="#000000"/>
+                    <rect x="14" y="14" width="16" height="16" fill="#FFFFFF"/>
+                    <rect x="18" y="18" width="8" height="8" fill="#000000"/>
+
+                    <rect x="66" y="10" width="24" height="24" fill="#000000"/>
+                    <rect x="70" y="14" width="16" height="16" fill="#FFFFFF"/>
+                    <rect x="74" y="18" width="8" height="8" fill="#000000"/>
+
+                    <rect x="10" y="66" width="24" height="24" fill="#000000"/>
+                    <rect x="14" y="70" width="16" height="16" fill="#FFFFFF"/>
+                    <rect x="18" y="74" width="8" height="8" fill="#000000"/>
+
+                    <rect x="40" y="12" width="6" height="6" fill="#000000"/>
+                    <rect x="52" y="12" width="6" height="6" fill="#000000"/>
+                    <rect x="44" y="24" width="6" height="6" fill="#000000"/>
+                    <rect x="40" y="36" width="18" height="6" fill="#000000"/>
+                    <rect x="12" y="44" width="6" height="14" fill="#000000"/>
+                    <rect x="24" y="44" width="6" height="6" fill="#000000"/>
+                    <rect x="36" y="48" width="6" height="12" fill="#000000"/>
+                    <rect x="48" y="48" width="6" height="6" fill="#000000"/>
+                    <rect x="62" y="40" width="6" height="6" fill="#000000"/>
+                    <rect x="74" y="44" width="14" height="6" fill="#000000"/>
+                    <rect x="44" y="66" width="12" height="6" fill="#000000"/>
+                    <rect x="66" y="66" width="6" height="6" fill="#000000"/>
+                    <rect x="80" y="72" width="8" height="14" fill="#000000"/>
+                    <rect x="44" y="78" width="6" height="12" fill="#000000"/>
+                    <rect x="56" y="80" width="14" height="6" fill="#000000"/>
+                  </svg>
+                  <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem;">
+                    NMID: ID102938472910 &bull; YAZUAR APPAREL
+                  </div>
+                </div>
+                <button type="button" id="btn-simulate-qris" class="btn-simulate-qris">
+                  SIMULASI SCAN & BAYAR QRIS (DEMO)
+                </button>
+              </div>
+            </div>
+
+            <!-- Virtual Account Box -->
+            <div id="pay-box-va" class="payment-box" style="display: none;">
+              <h4 style="font-size: 0.88rem; margin-bottom: 0.4rem;">Nomor Virtual Account BCA</h4>
+              <div style="display: flex; gap: 0.5rem; align-items: center; margin: 0.5rem 0;">
+                <code style="font-size: 1.15rem; font-weight: 800; background: #FFF; padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid var(--border-light); letter-spacing: 0.05em;">8801 2948 1029 3491</code>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="navigator.clipboard.writeText('8801294810293491'); showToast('Nomor VA disalin!', 'success');">Salin</button>
+              </div>
+              <p style="font-size: 0.78rem; color: var(--text-muted);">
+                Kirim via m-BCA menu Transfer &gt; BCA Virtual Account.
+              </p>
+            </div>
+
+            <!-- COD Box -->
+            <div id="pay-box-cod" class="payment-box" style="display: none;">
+              <h4 style="font-size: 0.88rem; margin-bottom: 0.35rem;">Bayar di Tempat (COD)</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">
+                Siapkan uang pas tunai saat paket diserahkan oleh kurir ke alamat Anda.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Order Summary & Pay Button -->
+          <div>
+            <div class="checkout-summary-card">
+              <h3 style="font-size: 0.95rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">RINGKASAN PESANAN</h3>
+              
+              <div id="co-items-list" class="checkout-items-list"></div>
+
+              <div class="summary-row">
+                <span>Subtotal Produk</span>
+                <span id="co-subtotal">Rp 0</span>
+              </div>
+
+              <div class="summary-row discount-row" id="co-discount-row" style="display: none;">
+                <span>Diskon Kupon</span>
+                <span id="co-discount">- Rp 0</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Ongkos Kirim</span>
+                <span id="co-shipping">Rp 12.000</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Biaya Layanan</span>
+                <span>Rp 1.000</span>
+              </div>
+
+              <div class="summary-row total-row" style="margin-top: 0.8rem;">
+                <span>Total Bayar</span>
+                <span id="co-grand-total">Rp 0</span>
+              </div>
+
+              <button type="submit" id="btn-submit-order" class="btn btn-accent" style="width: 100%; padding: 0.9rem;">
+                KONFIRMASI PESANAN SEKARANG
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       OFFICIAL DIGITAL INVOICE / RECEIPT MODAL
+       ======================================================================= -->
+  <div id="invoice-modal" class="modal-backdrop">
+    <div class="modal-window invoice-modal-window">
+      <button id="btn-close-invoice" class="btn-close-modal" title="Tutup">&times;</button>
+
+      <div class="invoice-paper">
+        <div class="invoice-top-header">
+          <div>
+            <div class="invoice-brand">YAZUAR APPAREL CO.</div>
+            <div class="invoice-brand-sub">Official Order Receipt / Bukti Pembelian</div>
+          </div>
+          <div class="invoice-status-stamp">LUNAS (PAID)</div>
+        </div>
+
+        <div class="invoice-meta-grid">
+          <div class="inv-meta-block">
+            <h5>No. Pesanan</h5>
+            <strong id="inv-number">-</strong>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 0.2rem;" id="inv-date">-</div>
+          </div>
+          <div class="inv-meta-block">
+            <h5>Metode Bayar</h5>
+            <strong id="inv-payment">-</strong>
+            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 0.2rem;">Kurir: <span id="inv-courier">-</span></div>
+          </div>
+          <div class="inv-meta-block">
+            <h5>Penerima</h5>
+            <strong id="inv-cust-name">-</strong> (<span id="inv-cust-phone">-</span>)
+          </div>
+          <div class="inv-meta-block">
+            <h5>Alamat Kirim</h5>
+            <span id="inv-cust-address">-</span>
+            <div style="font-size: 0.74rem; color: var(--text-muted);">Catatan: <span id="inv-cust-notes">-</span></div>
+          </div>
+        </div>
+
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th style="text-align: center;">Qty</th>
+              <th style="text-align: right;">Harga</th>
+              <th style="text-align: right;">Total</th>
+            </tr>
+          </thead>
+          <tbody id="inv-items-body"></tbody>
+        </table>
+
+        <div class="invoice-summary-box">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="inv-subtotal">Rp 0</span>
+          </div>
+          <div class="summary-row discount-row" id="inv-discount-row">
+            <span>Diskon Kupon</span>
+            <span id="inv-discount">- Rp 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Ongkir</span>
+            <span id="inv-shipping">Rp 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Biaya Layanan</span>
+            <span>Rp 1.000</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total Bayar</span>
+            <span id="inv-total">Rp 0</span>
+          </div>
+        </div>
+
+        <div class="invoice-actions">
+          <button id="btn-print-invoice" class="btn btn-secondary">
+            Cetak Struk (PDF)
+          </button>
+          <button class="btn btn-primary" onclick="window.appCheckout.closeInvoiceModal()">
+            Selesai Belanja
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       WISHLIST MODAL
+       ======================================================================= -->
+  <div id="wishlist-modal" class="modal-backdrop">
+    <div class="modal-window wishlist-modal-window">
+      <button id="btn-close-wishlist-modal" class="btn-close-modal" title="Tutup">&times;</button>
+
+      <h3 style="font-size: 1.25rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">WISHLIST / FAVORIT</h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;">Daftar item yang kamu simpan.</p>
+
+      <div id="wishlist-empty-state" class="cart-empty-state" style="padding: 2.5rem 0;">
+        <div class="empty-box-tag">[ WISHLIST KOSONG ]</div>
+        <h4>Wishlist masih kosong</h4>
+        <p>Klik tombol favorit pada produk untuk menyimpannya.</p>
+      </div>
+
+      <div id="wishlist-items-container" class="wishlist-items-container"></div>
+    </div>
+  </div>
+
+  <!-- Minimalist Practical Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div style="font-size: 1.15rem; font-weight: 800; color: #FFF; letter-spacing: -0.02em;">YAZUAR APPAREL CO.</div>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 0.35rem;">
+          Streetwear & Apparel Supply. Built for daily comfort.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="#products-grid">Katalog</a>
+        <a href="javascript:void(0)" onclick="window.appCart.applyVoucher('DISKON10'); showToast('Kupon DISKON10 diaktifkan!', 'success');">Klaim Kupon 10%</a>
+        <a href="javascript:void(0)" onclick="openCartDrawer()">Keranjang</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 YAZUAR APPAREL &bull; School Web Development Project
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
