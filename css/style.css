@@ -81,24 +81,32 @@ a {
   letter-spacing: 0.05em;
   padding: 0.55rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
+  overflow: hidden;
+  position: relative;
 }
 
-.announcement-bar::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
-.bar-inner {
+.marquee-track {
   display: flex;
-  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   white-space: nowrap;
-  padding: 0 1rem;
-  min-width: max-content;
-  margin: 0 auto;
+  animation: marquee-scroll 22s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .dot-sep {
@@ -1587,13 +1595,6 @@ a {
 /* --- Tablet portrait / large phone (max 768px) --- */
 @media (max-width: 768px) {
 
-  /* Announcement bar: always scrollable, no wrapping */
-  .announcement-bar {
-    font-size: 0.72rem;
-  }
-  .bar-inner {
-    justify-content: flex-start;
-  }
 
   /* Navbar */
   .navbar-container {
@@ -1710,10 +1711,6 @@ a {
 /* --- Small phone (max 480px) --- */
 @media (max-width: 480px) {
 
-  /* Announcement bar: slightly smaller font */
-  .announcement-bar {
-    font-size: 0.68rem;
-  }
 
   /* Navbar: tighter */
   .navbar-header {
