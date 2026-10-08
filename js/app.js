@@ -551,6 +551,8 @@ function openProductDetail(productId) {
 
   modal.classList.add("modal-active");
   document.body.style.overflow = "hidden";
+  const modalWindow = modal.querySelector(".product-detail-modal-window");
+  if (modalWindow) modalWindow.scrollTop = 0;
 }
 
 function selectDetailVariant(variantValue, btnElement) {
@@ -574,6 +576,15 @@ function setupProductDetailModalEvents() {
     closeBtn.addEventListener("click", () => {
       modal.classList.remove("modal-active");
       document.body.style.overflow = "";
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("modal-active");
+        document.body.style.overflow = "";
+      }
     });
   }
 
