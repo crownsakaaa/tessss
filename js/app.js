@@ -161,13 +161,13 @@ function renderProductGrid() {
             </div>
 
             <div class="card-action-btns">
-              <button class="btn-quick-add" onclick="quickAddToCart('${product.id}')" title="Tambah ke keranjang">
+              <button class="btn-quick-add" onclick="quickAddToCart('${product.id}')" title="Tambah ke keranjang" aria-label="Tambah ${product.name} ke keranjang">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-7z"></path>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
                   <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
-                <span>+ Keranjang</span>
+                <span class="btn-add-label">+ Keranjang</span>
               </button>
             </div>
           </div>

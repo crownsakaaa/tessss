@@ -325,7 +325,13 @@ a {
   gap: 0.4rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
+  padding-right: 1.25rem; /* prevent last pill from clipping */
   margin-bottom: 1.75rem;
+  scrollbar-width: none;
+}
+
+.category-filter-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .category-pill {
@@ -1629,20 +1635,37 @@ a {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.6rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 1rem;
   }
   .catalog-heading {
     font-size: 1.25rem;
   }
   .catalog-sort-box {
-    align-self: flex-end;
+    align-self: flex-start;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .category-filter-nav {
-    gap: 0.3rem;
+    gap: 0.35rem;
     margin-bottom: 1.25rem;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 1.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .category-filter-nav::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
   .category-pill {
     font-size: 0.72rem;
     padding: 0.4rem 0.75rem;
+    flex-shrink: 0;
   }
 
   /* Product grid: 2 columns */
@@ -1657,21 +1680,84 @@ a {
     font-size: 0.84rem;
   }
   .product-desc-preview {
-    display: none; /* hide excerpt on small screens */
-  }
-  .price-now {
-    font-size: 0.95rem;
+    display: none;
   }
 
-  /* Detail modal: single column, full height */
-  .modal-overlay {
+  /* Meta row: stack category + rating vertically so they don't overlap */
+  .product-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    margin-bottom: 0.4rem;
+  }
+  .product-rating {
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  /* Card footer: icon-only button so it never overflows */
+  .product-card-footer {
+    gap: 0.4rem;
+  }
+  .product-price {
+    font-size: 0.88rem;
+  }
+  .product-original-price {
+    font-size: 0.68rem;
+  }
+  /* Hide the text label on add-to-cart, show icon only */
+  .btn-quick-add {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-quick-add svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+  .btn-quick-add .btn-add-label {
+    display: none !important;
+  }
+
+  /* All modals: bottom sheet on mobile */
+  .modal-backdrop {
     align-items: flex-end;
+    padding: 0;
   }
   .product-detail-modal-window {
     grid-template-columns: 1fr;
     border-radius: 16px 16px 0 0;
     max-height: 92vh;
+    width: 100%;
+    max-width: 100%;
     overflow-y: auto;
+  }
+  .modal-prod-img {
+    max-height: 240px;
+    min-height: 180px;
+    object-fit: cover;
+  }
+  .modal-prod-info {
+    padding: 1.25rem 1rem;
+    max-height: none;
+  }
+  .modal-qty-actions-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .modal-qty-actions-row .quantity-stepper {
+    width: 100%;
+    justify-content: center;
+  }
+  .modal-qty-actions-row .btn {
+    flex: 1;
+    min-width: 120px;
   }
 
   /* Cart & Wishlist drawer */
@@ -1735,15 +1821,16 @@ a {
   .product-title {
     font-size: 0.8rem;
   }
-  .btn-add-to-cart-card {
-    font-size: 0.72rem;
-    padding: 0.5rem 0.6rem;
+  .btn-quick-add {
+    padding: 0.4rem;
+    min-width: 32px;
+    height: 32px;
   }
-  .price-now {
-    font-size: 0.88rem;
+  .product-price {
+    font-size: 0.82rem;
   }
-  .price-original {
-    font-size: 0.72rem;
+  .product-original-price {
+    font-size: 0.65rem;
   }
 
   /* Product detail modal: full screen */
